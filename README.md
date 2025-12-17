@@ -37,11 +37,11 @@
 - [đấy₂ (emphasis / reminder)](guide/days_2.md)
 - [đấy₃ (contrast with expectation)](guide/days_3.md)
 
-- kia₁ (far demonstrative – object)
-- kia₂ (contrastive reference)
+- [kia₁ (far demonstrative – object)](guide/kia_1.md)
+- [kia₂ (contrastive reference)](guide/kia_2.md)
 
-- ấy₁ (anaphoric reference)
-- ấy₂ (soft / indirect reference)
+- [ấy₁ (anaphoric reference)](guide/ay_1.md)
+- [ấy₂ (soft / indirect reference)](guide/ay_2.md)
 
 ---
 
@@ -49,20 +49,20 @@
 
 (số lượng, phạm vi)
 
-- các
-- mọi
-- mỗi₁ (distributive)
-- mỗi₂ (temporal repetition)
-- mỗi₃ (contrastive emphasis)
+- [các](guide/cac.md)
+- [mọi](guide/moi.md)
+- [mỗi₁ (distributive)](guide/moix_1.md)
+- [mỗi₂ (temporal repetition)](guide/moix_2.md)
+- [mỗi₃ (contrastive emphasis)](guide/moix_3.md)
 
-- những₁ (plural marker)
-- những₂ (selective / contrastive)
+- [những₁ (plural marker)](guide/nhung_1.md)
+- [những₂ (selective / contrastive)](guide/nhung_2.md)
 
-- tất cả
-- toàn
-- từng₁ (past experience)
-- từng₂ (each in the past)
-- từng₃ (contrast with present)
+- [tất cả](guide/tat_ca.md)
+- [toàn](guide/toan.md)
+- [từng₁ (past experience)](guide/tung_1.md)
+- [từng₂ (each in the past)](guide/tung_2.md)
+- [từng₃ (contrast with present)](guide/tung_3.md)
 
 ---
 
@@ -70,16 +70,16 @@
 
 (danh từ hoá, đơn vị)
 
-- con
-- cái₁ (classifier)
-- cái₂ (nominalizer)
+- [con](guide/con.md)
+- [cái₁ (classifier)](guide/cai_1.md)
+- [cái₂ (nominalizer)](guide/cai_2.md)
 
-- hàng₁ (rows / units)
-- hàng₂ (repetition / regularity)
+- [hàng₁ (rows / units)](guide/hang_1.md)
+- [hàng₂ (repetition / regularity)](guide/hang_2.md)
 
-- ngày₁ (time unit)
-- ngày₂ (frequency)
-- ngày₃ (progressive change)
+- [ngày₁ (time unit)](guide/ngay_1.md)
+- [ngày₂ (frequency)](guide/ngay_2.md)
+- [ngày₃ (progressive change)](guide/ngay_3.md)
 
 ---
 
