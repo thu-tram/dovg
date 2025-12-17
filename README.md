@@ -1,43 +1,41 @@
 # Dictionary of Vietnamese Grammar
 
-### A. PARTICLES & DISCOURSE WORDS
+## A. PARTICLES & DISCOURSE WORDS
 
 (các từ thể hiện thái độ, quan hệ hội thoại)
 
 - a
-- à₁ (confirmation / realization)
-- à₂ (soft response / acknowledgment)
+- [à₁ (confirmation / realization)](guide/a_1.md)
+- [à₂ (soft response / acknowledgment)](guide/a_2.md)
 
-- chứ₁ (correction / contrast)
-- chứ₂ (expectation / rhetorical)
+- [chứ₁ (correction / contrast)](guide/chu_1.md)
+- [chứ₂ (expectation / rhetorical)](guide/chu_2.md)
 
-- mà₁ (contrast)
-- mà₂ (explanation / justification)
-- mà₃ (unexpected result)
-- mà₄ (complaint / emotional emphasis)
-- mà₅ (background information)
-- mà₆ (spoken sentence connector)
+- [mà₁ (contrast)](guide/ma_1.md)
+- [mà₂ (explanation / justification)](guide/ma_2.md)
+- [mà₃ (unexpected result)](guide/ma_3.md)
+- [mà₄ (complaint / emotional emphasis)](guide/ma_4.md)
+- [mà₅ (background information)](guide/ma_5.md)
+- [mà₆ (spoken sentence connector)](guide/ma_6.md)
 
-- nhé
-- nhỉ
+- [nhé](guide/nhe.md)
+- [nhỉ](guide/nhi.md)
 - [thì](guide/thi.md)
-- thôi
-- vậy₁ (logical conclusion)
-- vậy₂ (response / reaction)
-- vậy₃ (discourse transition)
+- [thôi](guide/thoi.md)
+- [vậy₁ (logical conclusion)](guide/vay_1.md)
+- [vậy₂ (response / reaction)](guide/vay_2.md)
+- [vậy₃ (discourse transition)](guide/vay_3.md)
 
----
-
-### B. DEMONSTRATIVES
+## B. DEMONSTRATIVES
 
 (chỉ định: this / that, nhưng theo kiểu tiếng Việt)
 
-- đây₁ (location / presence)
-- đây₂ (introducing information)
+- [đây₁ (location / presence)](guide/day_1.md)
+- [đây₂ (introducing information)](guide/day_2.md)
 
-- đấy₁ (pointing out)
-- đấy₂ (emphasis / reminder)
-- đấy₃ (contrast with expectation)
+- [đấy₁ (pointing out)](guide/days_1.md)
+- [đấy₂ (emphasis / reminder)](guide/days_2.md)
+- [đấy₃ (contrast with expectation)](guide/days_3.md)
 
 - kia₁ (far demonstrative – object)
 - kia₂ (contrastive reference)
@@ -47,7 +45,7 @@
 
 ---
 
-### C. DETERMINERS & QUANTIFIERS
+## C. DETERMINERS & QUANTIFIERS
 
 (số lượng, phạm vi)
 
@@ -68,7 +66,7 @@
 
 ---
 
-### D. CLASSIFIERS & NOMINALIZERS
+## D. CLASSIFIERS & NOMINALIZERS
 
 (danh từ hoá, đơn vị)
 
@@ -85,7 +83,7 @@
 
 ---
 
-### E. VERBS OF GRAMMATICAL FUNCTION
+## E. VERBS OF GRAMMATICAL FUNCTION
 
 (động từ “ngữ pháp hoá”)
 
@@ -101,9 +99,7 @@
 - là₃ (focus marker)
 - là₄ (emphasis / correction)
 
----
-
-### F. ASPECT, TIME & MODALITY
+## F. ASPECT, TIME & MODALITY
 
 (thời – thể – thái)
 
@@ -123,9 +119,7 @@
 - suýt
 - toan
 
----
-
-### G. DEGREE & EVALUATION
+## G. DEGREE & EVALUATION
 
 (mức độ, đánh giá)
 
@@ -141,7 +135,7 @@
 
 ---
 
-### H. RELATIONS & CONDITIONS
+## H. RELATIONS & CONDITIONS
 
 (nguyên nhân, điều kiện, loại trừ)
 
