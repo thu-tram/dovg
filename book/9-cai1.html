@@ -1,0 +1,297 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Cái (Cn) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="cái-cn"><a class="header" href="#cái-cn">Cái (Cn)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> Lan is talking to Thu about a friend (male) she has recently become acquainted with:</p>
+<pre>
+Anh ấy có ba cái nhà, một cái ở Đà Lạt, một cái ở Vũng Tàu và một cái ở Nha Trang.
+(He has got three houses, one in Đà Lạt, one in Vũng Tàu and one in Nha Trang.)
+</pre>
+<p>In this situation, <strong>cái</strong>, classifying noun, used after a number, unitizes the mass noun referring to things. If the prior context defines the mass noun, then in subsequent uses the mass noun following <strong>cái</strong> can be omitted.</p>
+<p><strong>S2:</strong> Hearing that Tâm wants to buy a camera, Hải says:</p>
+<pre>
+Tôi thấy cửa hàng T. đang bán mấy cái máy ảnh rất hiện đại.
+(I saw a few modern cameras in the T. shop.)
+</pre>
+<p><strong>Cái</strong> usually appears after the quantifiers like <strong>mấy</strong>, <strong>vài</strong>, <strong>một số</strong>, <strong>nửa</strong>, etc., or after the articles like <strong>một</strong>, <strong>những</strong>, <strong>các</strong>.</p>
+<p><strong>S3:</strong> In the clothes shop, Lan pointed at a shirt and said to the owner:</p>
+<pre>
+[1] Cho em xem cái áo kia đi, chị.
+(Show me that shirt, please.)
+[2] Cái nào? Cái này cô mặc hợp lắm đấy.
+(Which one? This one goes well with you.)
+</pre>
+<p>In [1] and [2], the classifying noun <strong>cái</strong> is used to unitize the noun phrases defined by the demonstratives like <strong>này</strong>, <strong>kia</strong>, or the interrogative <strong>nào</strong>.</p>
+<p><strong>S4:</strong> Lan's mother just came to the door when it started pouring. She called Lan:</p>
+<pre>
+[4] Lan ơi! Lấy cho mẹ cái áo mưa.
+(Lan! Give me the raincoat.)
+</pre>
+<p>In this situation, it is not necessary for <strong>cái</strong> to be used with a number, quantifier or demonstrative like in <strong>S1</strong>, <strong>S2</strong> and <strong>S3</strong>. The noun phrase <strong>cái áo mưa</strong> is understood when the listener (Lan) knows which one it is. In other words, the noun phrase <strong>cái áo mưa</strong> is singular and defined in the specific context.</p>
+<p><strong>S5:</strong> Hoa and Lan are talking about a film which has just been shown on TV:</p>
+<pre>
+[5] Cái hay của đạo diễn là để người xem tự tưởng tượng ra đoạn kết của bộ phim.
+(The creative talent of the director was that he gave the viewers the chance to imagine the end of his film.)
+</pre>
+<p><strong>Cái</strong> is used in this situation to nominalize a quality expressed by an adjective.</p>
+<p><strong>S6:</strong> Hải and Hùng are talking about their lives. Hải complains:</p>
+<pre>
+[6] Tôi còn rất vất vả. Phải lo cái ăn, cái mặc cho cả gia đình.
+(I must still work very hard. I have to take care of food and clothes for my family.)
+</pre>
+<p>In this situation, <strong>cái</strong> is used to nominalize the verb, or in other words, to transform an action into a thing. Here, it is understood that <strong>cái ăn</strong>, <strong>cái mặc</strong>, etc. is something to eat or something to put on (food, clothing, etc.).</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Cái</strong>, as a unit noun, is used before a mass noun to unitize the thing expressed by the mass noun which follows it. <strong>Cái</strong> is also used to nominalize a verb or an adjective.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li><strong>Cái</strong> and <strong>chiếc</strong>, <strong>cây</strong>, <strong>bức</strong>, <strong>tờ</strong>, <strong>căn</strong>, etc.:
+In many cases, <strong>cái</strong> can be used in place of the other unit nouns such as <strong>chiếc</strong>, <strong>cây</strong>, <strong>bức</strong>, etc. especially in spoken Vietnamese. Ex.:</li>
+</ul>
+<pre>
+[1] Anh tôi cho tôi cây / cái bút này.
+(My older brother gave me this pen.)
+[2] Bức / cái bản đồ này chi tiết hơn bức / cái bản đồ kia.
+(This map is more detailed than that map.)
+[3] Chiếc / cái xe này tôi mua năm ngoái.
+(I bought this motorbike last year.)
+</pre>
+<p><strong>NOTE:</strong> <strong>Cái</strong> is only used in place of unit nouns referring to things (inanimate), but it is not used in place of <strong>con</strong>, a unit noun referring to animals (except for very small animals like <strong>cái sâu</strong> (a worm), <strong>cái kiến</strong> (an ant), etc.</p>
+<p>On the other hand, <strong>cái</strong> cannot be used in place of classifying nouns referring to substances like <strong>viên gạch</strong> (a brick), <strong>cục đá</strong> (a stone), <strong>tờ giấy</strong> (a sheet of paper), <strong>giọt nước</strong> (a drop of water), <strong>tấm vải</strong> (a piece of cloth), etc. Cf:</p>
+<pre>
+[4a] Cục / *cái xà phòng này giá 6.000 đồng.
+(This bar of soap costs six thousand dong.)
+[4b] Anh chở đến nhà tôi 2.000 viên / *cái gạch.
+(Take 2,000 bricks to my house.)
+[4c] Anh có giấy không? Cho tôi một tờ / *cái.
+(Do you have some paper? Give me one sheet.)
+</pre>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>cái + restrictive noun phrase</strong>
+Cf:</li>
+</ul>
+<pre>
+[1] Chiều nay tôi đi mua áo đầm.
+(I am going to buy robes this afternoon.)
+</pre>
+<p>(We cannot say ... <em>cái áo đầm</em>)</p>
+<pre>
+[2] Tôi mua cái áo đầm ấy ở tiệm TiTi.
+(I bought that robe at the TiTi shop.)
+</pre>
+<p>(We cannot say ... <em>áo đầm ấy</em>)
+The noun phrase <strong>áo đầm</strong> in [1] is the generic noun phrase that serves to indicate that this is not a shirt or <strong>áo dài</strong>, etc. That is why it does not require the presence of the classifying noun <strong>cái</strong>, while the phrase <strong>áo đầm ấy</strong> in [2] is a restrictive noun phrase that indicates a defined thing, therefore, it does require the classifying noun <strong>cái</strong> to precede it.</p>
+<ul>
+<li><strong>cái thì... cái thì...</strong>
+This construction is used to express a relationship of contrast between things of the same category. Ex.:</li>
+</ul>
+<pre>
+[3] Sáng nay tôi đã đi tìm mua vài cái quần jean, nhưng chẳng mua được cái nào cả. Cái thì quá rộng, cái thì quá hẹp.
+(This morning I looked for some jeans to buy, but I did not get any. One was too big, the others were too small.)
+</pre>
+<p>Cf. <strong>thì</strong> (p. 361).</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="8-cac.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="10-cai2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="8-cac.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="10-cai2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
