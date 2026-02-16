@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Lắm (Adv) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="lắm-adv"><a class="header" href="#lắm-adv">Lắm (Adv)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S:</strong> Hoa asked Lan: "Have you seen that film? Is it good?". Lan answered:</p>
+<pre>
+Tôi xem rồi. Phim đó hay lắm!
+(Yes, I have. It is very good.)
+</pre>
+<p>In this situation, <strong>lắm</strong> expresses Lan's idea that the film is very good, better than other films.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Lắm</strong>, as an adverb which comes after the adjective or the verb, indicates that a characteristic, a quality, or a state is highly appreciated, or is better than usual, according to the speaker.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li>
+<p><strong>Lắm</strong> is classified with the words of degree: <strong>rất</strong>, <strong>quá</strong>, <strong>lắm</strong>, <strong>hơi</strong>, <strong>khá</strong>, etc. Of these, <strong>lắm</strong> and <strong>quá</strong> are frequently used in spoken Vietnamese.
+Cf. <strong>rất</strong> (p. 323), <strong>quá1</strong> (p. 317).</p>
+</li>
+<li>
+<p>Both <strong>lắm</strong> and <strong>quá</strong> are often used in spoken Vietnamese, but <strong>lắm</strong> usually appears in narrative or commentary sentences, while <strong>quá</strong> is often used in exclamatory sentences. Cf:</p>
+</li>
+</ul>
+<pre>
+[1a] Mời bạn Tâm hát. Xin giới thiệu với các bạn, Tâm hát hay lắm!
+     (Ms. Tâm, will you please sing a song? I would like to tell you all that Tâm sings very well.)
+</pre>
+<p>(Tam finished singing, Nam said:)</p>
+<pre>
+[1b] Tâm hát hay quá!
+     (You sing very well!)
+</pre>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>không... lắm</strong> / <strong>không... cho lắm</strong>:
+The speaker uses this construction to soften a negative remark or attitude.</li>
+</ul>
+<pre>
+[1] Quyển từ điển này không tốt lắm.
+    (This dictionary is not very good.)
+[2] Chuyến du lịch tháng vừa rồi không vui cho lắm.
+    (Last month's trip was not very enjoyable.)
+</pre>
+<ul>
+<li><strong>... cho lắm (vào)</strong>, <strong>... cho lắm để...</strong>, <strong>... cho lắm để rồi...</strong>:</li>
+</ul>
+<pre>
+[6] Ho như thế mà hút thuốc cho lắm vào!
+    (You are coughing like that, yet you smoke so much!)
+</pre>
+<p>(Used to criticize someone's fault; implies they should not smoke.)</p>
+<pre>
+[7] Làm cho lắm để kiếm vài trăm ngàn mỗi tháng!
+    (Working so hard only to get several hundred thousand đồng a month!)
+</pre>
+<p>(Expresses a contrary result; implies the effort is not worth it.)</p>
+<ul>
+<li><strong>... (cho) lắm thì cũng...</strong>:
+Expresses the maximum capability of someone, even if they keep trying to do better.</li>
+</ul>
+<pre>
+[8] Anh viết dài lắm thì cũng 8 điểm thôi.
+    (No matter how much you write, you'll get only 8 points.)
+[9] Em có hát hay cho lắm thì cũng không thể bằng ca sĩ được.
+    (No matter how well you sing, you cannot do as well as a professional singer.)
+</pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="46-lam.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="48-lien1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="46-lam.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="48-lien1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Rồi (Conj) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="rồi-conj"><a class="header" href="#rồi-conj">Rồi (Conj)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> Nam and Hà went to the cinema, and then for coffee.</p>
+<pre>
+Hôm qua chúng tôi đi xem phim rồi đi uống cà phê.
+(We went to the cinema yesterday, and then we went for coffee.)
+</pre>
+<p><strong>Rồi</strong> introduces the succession of events.</p>
+<p><strong>S2:</strong> Narrating a story:</p>
+<pre>
+Hai vợ chồng già sinh được một bé gái... Rồi một hôm, người chồng vào rừng bị hổ ăn thịt. Người vợ đau buồn rồi cũng qua đời. Rồi ngày qua ngày, Tí Hon trở thành một cô gái xinh đẹp...
+(An old couple had a girl... Then one day, the husband was killed by a tiger. The wife was sad and she died. Then day by day, Tí Hon became a pretty girl...)
+</pre>
+<p><strong>Rồi</strong> links facts in a sequence of time.</p>
+<p><strong>S3:</strong> Nam gives advice to lazy Bình:</p>
+<pre>
+Bây giờ anh không chịu cố gắng, rồi có ngày anh phải hối tiếc.
+(Now you aren't working hard, and some day in the future you will regret it.)
+</pre>
+<p><strong>Rồi</strong> shows succession based on logic (consequence) rather than just time.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Rồi</strong>, as a conjunction, is used to indicate the succession in time of two or more facts, or to present a relationship where one fact gives rise to another.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li>Other words like <strong>nên</strong>, <strong>vì</strong>, <strong>do</strong>, <strong>bởi</strong>, <strong>bèn</strong>, <strong>còn</strong> also express relationships between facts (cause-effect, etc.), while <strong>rồi</strong> primarily focuses on succession.</li>
+</ul>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>rồi</strong> and <strong>sau đó</strong>:</li>
+</ul>
+<pre>
+[1] Làm bài tập xong rồi / sau đó đi chơi.
+    (Finish your homework first, then you can go out.)
+</pre>
+<ul>
+<li><strong>rồi sau đó</strong>:</li>
+</ul>
+<pre>
+[2] Em phải làm bài tập xong rồi sau đó mới được đi chơi.
+    (You won't go out until you finish your homework.)
+</pre>
+<ul>
+<li><strong>rồi sao (nữa)?</strong>: What happens next?</li>
+</ul>
+<pre>
+A: Anh ấy cầm lấy tay tôi, rồi...
+B: Rồi sao (nữa)?
+</pre>
+<ul>
+<li><strong>rồi sau này</strong>:</li>
+</ul>
+<pre>
+[4] Rồi sau này cô gái trở thành vợ ông.
+    (Later on, that girl became his wife.)
+</pre>
+<ul>
+<li><strong>rồi đây</strong>: In the future.</li>
+</ul>
+<pre>
+[5] Thời tiết rồi đây sẽ khắc nghiệt hơn.
+    (The weather will be harsher in the future.)
+</pre>
+<ul>
+<li><strong>vừa rồi</strong>:</li>
+</ul>
+<pre>
+[6] Đêm vừa rồi anh đi đâu? (Where did you go last night?)
+    Vừa rồi tôi có gặp anh ấy. (I recently met him.)
+</pre>
+<p><strong>NOTES:</strong> <strong>hôm rồi</strong> / <strong>hôm vừa rồi</strong> (a few days ago), <strong>tuần rồi</strong>, <strong>tháng rồi</strong>, <strong>năm rồi</strong>.</p>
+<ul>
+<li><strong>mới vừa rồi</strong>:</li>
+</ul>
+<pre>
+B: Mới vừa rồi, cách đây khoảng vài ngày. (Just a few days ago.)
+</pre>
+<ul>
+<li><strong>... rồi mới...</strong>:</li>
+</ul>
+<pre>
+[9] Có việc làm ổn định, rồi mới nghĩ đến đám cưới.
+    (I won't think about getting married until I have a stable job.)
+</pre>
+<ul>
+<li><strong>(V1) đã, rồi hãy (V2)</strong>: (V1 finishes before V2 starts.)</li>
+</ul>
+<pre>
+[10] Uống cà phê đã, rồi hãy về.
+     (Have a cup of coffee first, then go home.)
+</pre>
+<p>Similar to: <strong>V1 đã rồi V2</strong>, <strong>V1 rồi hãy V2</strong>, <strong>V1 rồi hẵng V2</strong>, <strong>V1 đã!</strong>.</p>
+<pre>
+[11] Nghỉ một chút rồi / rồi hẵng đi tiếp!
+[12] Nghỉ một chút đã!
+</pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="79-roi-adv.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="81-sap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="79-roi-adv.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="81-sap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

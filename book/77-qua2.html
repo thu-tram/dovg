@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Quá (Adv) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="quá-adv"><a class="header" href="#quá-adv">Quá (Adv)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> Nam finished only two exercises in two hours while others finished more. The teacher said:</p>
+<pre>
+Em Nam làm chậm quá!
+(Nam, you are very slow!)
+</pre>
+<p>Nam's speed was below the expected standard.</p>
+<p><strong>S2:</strong> Nam and Lan are traveling by train. Lan says excitedly:</p>
+<pre>
+Ôi, rừng núi đẹp quá!
+(Oh, the mountains are so beautiful!)
+</pre>
+<p>Lan uses <strong>quá</strong> because she is excited by the beauty.</p>
+<p><strong>S3:</strong> Lan tells Hoa about a concert she enjoyed.</p>
+<pre>
+Chị không đi xem thật là đáng tiếc. Chương trình hay quá!
+(It's too bad you didn't go; the program was very exciting!)
+</pre>
+<p>Lan is still excited about the concert.</p>
+<p><strong>S4:</strong> Nam wants to buy a dictionary that costs 200,000 VND.</p>
+<pre>
+Quyển từ điển này tốt, nhưng quá mắc, tôi mua không nổi.
+(The dictionary is good, but it's too expensive; I can't afford it.)
+</pre>
+<p><strong>Quá</strong> indicates a degree beyond Nam's capacity or a normal limit.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Quá</strong>, as an adverb, is used to indicate a degree that the speaker considers above normal, over the limit, or beyond their capacity.</p>
+<p><strong>NOTE:</strong> <strong>Quá</strong> is often used after an adjective or modal verb in exclamatory sentences to express feelings about something currently or recently perceived.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li><strong>quá</strong>, <strong>rất</strong>, <strong>lắm</strong>, <strong>hơi</strong>, <strong>khá</strong>:
+<strong>Quá</strong> and <strong>lắm</strong> are frequent in speech. <strong>Lắm</strong> is more common in narration or commentary on a value, while <strong>quá</strong> is used in exclamations. <strong>Rất</strong> is neutral and can appear in most situations.</li>
+</ul>
+<pre>
+[1a] Cô ấy đẹp lắm! (She is very pretty - narration/remark.)
+[1b] Cô ấy rất đẹp. (She is very pretty - neutral description.)
+</pre>
+<p>Cf. <strong>lắm2</strong> (p. 201), <strong>rất</strong> (p. 323).</p>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>Quá</strong> is often used in exclamatory sentences ending with a "!".</li>
+<li><strong>quá... để...</strong>:</li>
+</ul>
+<pre>
+[1] Cô ấy quá trẻ để đảm nhận chức vụ này.
+    (She is too young to take charge of this post.)
+</pre>
+<ul>
+<li><strong>quá chừng</strong>, <strong>quá cỡ</strong>, <strong>quá mức</strong>, <strong>quá sức</strong>, <strong>quá trời</strong>, <strong>quá thể</strong>, <strong>quá đỗi</strong>:</li>
+</ul>
+<pre>
+[2] Bữa tiệc tối hôm qua vui quá chừng. (The party was so much fun.)
+[5] Chương trình ca nhạc tối hôm qua hay quá sức. (The show was very exciting.)
+[6] Tôi chờ anh lâu quá trời. (I've been waiting ages.)
+[8] Nhận được thư gia đình họ vui mừng quá đỗi. (They were overjoyed.)
+</pre>
+<ul>
+<li><strong>(X) quá là (X)</strong> (spoken):</li>
+</ul>
+<pre>
+[9] Hay quá là hay! (It's so good!)
+</pre>
+<ul>
+<li><strong>quá lắm (cũng) (chỉ) (X)</strong>: (X is the absolute limit.)</li>
+</ul>
+<pre>
+[10] Cô ấy quá lắm cũng chỉ 28, chứ không đến 30 đâu.
+     (She is 28 at most; she can't be 30.)
+[11] Anh đừng lo, quá lắm bảy giờ là xong.
+     (Don't worry, it will be done by seven o'clock at the latest.)
+</pre>
+<p>In spoken Vietnamese, when following an action verb, <strong>quá</strong> indicates doing something beyond an allowed degree:</p>
+<pre>
+[12] Anh đừng nói quá! (Don't exaggerate!)
+[13] Sao em làm quá vậy! (Why are you making such a fuss?)
+</pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="76-qua1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="78-rat.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="76-qua1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="78-rat.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

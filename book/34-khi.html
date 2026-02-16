@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Khi (N) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="khi-n"><a class="header" href="#khi-n">Khi (N)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> At 7 o'clock in the morning, Hà passed by the coffee shop and saw Nam and Lan sitting there.</p>
+<pre>
+Hà nhìn thấy họ khi đi ngang qua quán cà phê.
+(Hà saw them while passing by the coffee shop.)
+</pre>
+<p>In this situation, <strong>khi</strong> is used to express a point of time in which an action or a state is occurring (<strong>nhìn thấy</strong>); that point of time goes together with a fact, an action, or a state (<strong>đi ngang qua</strong>).</p>
+<p><strong>S2:</strong> Last night, when Tân came back home at 12 o'clock, his wife was sleeping.</p>
+<pre>
+Tân về nhà khi vợ đã ngủ.
+(Tân came back home as his wife was asleep.)
+</pre>
+<p>In this situation, <strong>khi vợ đã ngủ</strong> is considered as the period of time in which Tân came back home.</p>
+<p><strong>S3:</strong> Last night, at 12 o'clock when Tân came back home, his wife was sleeping.</p>
+<pre>
+Khi Tân về nhà, vợ anh đang ngủ.
+(When Tân came back home, his wife was sleeping.)
+</pre>
+<p>In this situation, <strong>khi Tân về nhà</strong> is considered as a point of time in which his wife was sleeping.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Khi</strong>, as a noun, is used to express a point of time which goes together with a fact, an action or state.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li><strong>khi</strong> and <strong>lúc</strong>:
+<strong>Khi</strong> and <strong>lúc</strong> can replace each other to indicate a point of time, but <strong>khi</strong> can't replace <strong>lúc</strong> to express a short period of time. Also, <strong>lúc</strong> can't replace <strong>khi</strong> to express conditional meaning. Cf:</li>
+</ul>
+<pre>
+[1] Khi / Lúc Tân về nhà, vợ anh đang ngủ.
+    (When Tân arrived home, his wife was sleeping.)
+[2] Đợi một *khi / lúc thì anh ấy về.
+    (Wait a moment and he will return.)
+[3] Xã hội sẽ tốt hơn khi / *lúc chính phủ biết quan tâm đến dân.
+    (Society will be better when the government is more concerned about ordinary people.)
+</pre>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>một khi</strong>: Can be combined with <strong>đã... là / thì...</strong> to affirm a habit, a rule, or a certain thing.</li>
+</ul>
+<pre>
+[1] Một khi anh ấy (đã) hứa (là) anh ấy sẽ làm.
+    (Once he promises something, he does it.)
+</pre>
+<ul>
+<li><strong>mỗi khi... là...</strong>:</li>
+</ul>
+<pre>
+[2] Mỗi khi nó viết thư về nhà là tôi biết nó hết tiền.
+    (Whenever he writes to his family, I know he's broke.)
+</pre>
+<ul>
+<li><strong>có khi</strong> / <strong>có khi nào... không?</strong>: Perhaps, maybe; used to offer a prediction.</li>
+</ul>
+<pre>
+[3a] Trễ quá! Có khi anh ấy đã quên rồi.
+     (It's so late! Perhaps he has forgotten.)
+[3b] Trễ quá! Có khi nào anh ấy quên không?
+     (It's so late! Might he by any chance have forgotten?)
+</pre>
+<ul>
+<li><strong>ít khi</strong>: Seldom.</li>
+</ul>
+<pre>
+[4] Buổi sáng ít khi trời mưa.
+    (It seldom rains in the morning.)
+</pre>
+<ul>
+<li><strong>mấy khi</strong>: Rarely.</li>
+</ul>
+<pre>
+[5] Không cần mang theo áo mưa đâu, buổi sáng mấy khi mưa!
+    (It isn't necessary to bring your raincoat; rarely does it rain in the morning!)
+</pre>
+<ul>
+<li><strong>nhiều khi</strong>: Often.</li>
+</ul>
+<pre>
+[6] Công việc đơn giản quá, nhiều khi tôi cũng chán.
+    (The work is so simple; I often get bored.)
+</pre>
+<ul>
+<li><strong>đôi khi</strong>: Sometimes.</li>
+</ul>
+<pre>
+[7] Buổi tối, tôi thường ở nhà. Đôi khi tôi đến thăm bạn.
+    (I usually stay at home in the evening. Sometimes I visit my friends.)
+</pre>
+<ul>
+<li><strong>khi thì..., khi thì...</strong>:</li>
+</ul>
+<pre>
+[8] Công việc của tôi không đều, khi thì quá nhiều, khi thì quá ít.
+    (My work isn't regular; at times it's too much, at other times it's too little.)
+</pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="33-hang2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="35-kia1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="33-hang2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="35-kia1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

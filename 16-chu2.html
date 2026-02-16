@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Chứ (Par) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="chứ-par"><a class="header" href="#chứ-par">Chứ (Par)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> Nam and Bình haven't met for a long time. Nam asks Bình about things:</p>
+<pre>
+Anh vẫn khỏe chứ? Công việc tốt chứ? Gia đình của anh ở chỗ cũ chứ?
+(You are still fine, right? The work is good, right? Your family is still at the same place, right?)
+</pre>
+<p>In this situation, Nam thinks that Bình is fine, that his work is OK, and his family is still at the same place. In order to verify what Nam thinks, he used questions with <strong>chứ</strong>.</p>
+<p><strong>S2:</strong> This morning Hoa looked tired when she came to the office. Lan asked anxiously:</p>
+<pre>
+Em khỏe chứ? Em không bị bệnh chứ?
+(Are you sure you are alright? You aren't sick, are you?)
+</pre>
+<p>In this situation, Lan wants to hear from Hoa that she is <strong>vẫn khỏe</strong> (still fine), that she is <strong>không bị bệnh</strong> (not sick).
+<strong>NOTE:</strong> This use of <strong>chứ</strong> in a question must not be used with superiors who are older or in higher social position (with superiors we must use <strong>chứ ạ</strong>).</p>
+<p><strong>S3:</strong> Bình borrowed a book from Nam for a long time. Nam asked:</p>
+<pre>
+Anh có nhớ anh còn mượn tôi một cuốn sách không?
+(Do you remember that you are still borrowing my book?)
+Nhớ chứ! Tôi sẽ trả khi nào tôi đọc xong. Đừng lo!
+(Of course I remember! I will return it when I am finished with it. Don't worry!)
+</pre>
+<p>In this situation, <strong>chứ</strong> is used to emphasize what has just been affirmed.</p>
+<p><strong>S4:</strong> Hà and Nam are speaking negatively about the director. When seeing him approaching, Hà says:</p>
+<pre>
+Nói khẽ chứ!
+(Will you lower your voice / tone down?)
+</pre>
+<p><strong>S5:</strong> Entering a clock shop, Nam asked Hà:</p>
+<pre>
+Đồng hồ Seiko của Thụy Sĩ tốt lắm, phải không?
+(The Seiko watch from Switzerland is very good, isn't it?)
+Đồng hồ Seiko là của Nhật chứ!
+(Seiko is a Japanese watch!)
+</pre>
+<p>In this situation, <strong>chứ</strong> is used to assert that Hà is right, and, at the same time, to reject the wrong sentence from Nam.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Chứ</strong>, as a sentence final particle, is used when the speaker wants to confirm his thought, or wish that something will happen (<strong>S1</strong>, <strong>S2</strong>), to lay stress on what has just been asserted (<strong>S3</strong>), to require or remind something (<strong>S4</strong>), or to reject / object to something (<strong>S5</strong>).</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li><strong>Chứ</strong> and <strong>mà</strong>:
+Cf:</li>
+</ul>
+<pre>
+[1a] Cây bút này của anh Nam chứ?
+     (This pen belongs to Nam, doesn't it?)
+</pre>
+<p>(Assertion / question.)</p>
+<pre>
+[1b] Cây bút này của anh Nam chứ!
+     (No. This pen surely belongs to Nam!)
+</pre>
+<p>(Rejects what was spoken before.)</p>
+<pre>
+[1c] Cây bút này của anh Nam mà!
+     (No. This pen surely belongs to Nam!)
+</pre>
+<p>(An explanation.)</p>
+<p>Cf:</p>
+<pre>
+[2a] Cô ấy là người Mỹ chứ?
+     (She is an American, isn't she?)
+</pre>
+<p>(Assertion / question.)</p>
+<pre>
+[2b] Cô ấy là người Mỹ chứ!
+     (No. She is an American!)
+</pre>
+<p>(Rejection of what was spoken before.)</p>
+<pre>
+[2c] Cô ấy là người Mỹ mà!
+     (No. She is an American!)
+</pre>
+<p>(An explanation.)</p>
+<p>The sentences [1a] and [2a] have the meaning of asking a question in order to confirm that what the speaker thinks is correct.
+The sentences [1b] and [2b] express rejection of what was spoken before.
+The sentences [1c] and [2c] have the meaning of explaining / justifying something or persuading someone.
+Cf. <strong>mà1</strong> (p. 241).</p>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>... đi chứ!</strong></li>
+</ul>
+<pre>
+[1] Nói đi chứ!
+    (Speak! / Speak up!)
+</pre>
+<ul>
+<li><strong>... được chứ?</strong></li>
+</ul>
+<pre>
+[2] Tôi làm như thế được chứ?
+    (Can I do it that way?)
+</pre>
+<ul>
+<li><strong>... chứ ạ?</strong></li>
+</ul>
+<pre>
+[3] Ông khỏe chứ ạ?
+    (Sir! Are you well?)
+</pre>
+<p>(When speaking with a superior.)</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="15-chu1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="17-co.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="15-chu1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="17-co.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

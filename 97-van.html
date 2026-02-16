@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="vi" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Vẫn (Adv) - Dictionary of Basic Vietnamese Grammar</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="style/custom.css">
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Dictionary of Basic Vietnamese Grammar</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="vẫn-adv"><a class="header" href="#vẫn-adv">Vẫn (Adv)</a></h1>
+<h3 id="situations"><a class="header" href="#situations">Situations</a></h3>
+<p><strong>S1:</strong> Nam meets Lan after three years.</p>
+<pre>
+Trông chị vẫn trẻ và đẹp như trước.
+(You still look as young and beautiful as before.)
+</pre>
+<p><strong>Vẫn</strong> indicates that her beauty and youth have continued from before.</p>
+<p><strong>S2:</strong> At 11:00 AM on Sunday, Bình visits Nam.</p>
+<pre>
+Đến giờ ăn trưa rồi mà Nam vẫn ngủ.
+(It's time for lunch, but Nam is still sleeping.)
+</pre>
+<p><strong>Vẫn</strong> expresses a prolonged state that normally should have changed.</p>
+<p><strong>S3:</strong> Nam's family is traveling soon. He decides to make a reservation.</p>
+<pre>
+Đặt phòng trước thì vẫn hơn.
+(Booking a room in advance is even better.)
+</pre>
+<p><strong>Vẫn</strong> is used here to say that one way is more certain or better than another.</p>
+<p><strong>S4:</strong> Nam meets Tân after three years.</p>
+<pre>
+Trông anh vẫn thế!
+(You look the same as before!)
+</pre>
+<p>Nam says Tân hasn't changed. <strong>Thế / vậy</strong> are pronouns referring to his previous state.</p>
+<h3 id="definition"><a class="header" href="#definition">Definition</a></h3>
+<p><strong>Vẫn</strong>, as an adverb, is used to express the continuation of an action, state, or quality that would normally be expected to change.</p>
+<h3 id="related-expressions"><a class="header" href="#related-expressions">Related Expressions</a></h3>
+<ul>
+<li><strong>vẫn</strong>, <strong>còn</strong>, <strong>cứ</strong>:</li>
+<li><strong>Còn</strong> expresses simple continuance at the moment of speaking (but it will eventually end). It can be used alone in responses.</li>
+</ul>
+<pre>
+[1a] Nó còn ngủ. (He is still sleeping - hasn't woken up yet.)
+[1b] Nó cứ ngủ. (He keeps on sleeping - despite attempts to wake him.)
+[1c] Nó vẫn ngủ. (He is still sleeping - even though it's late.)
+</pre>
+<ul>
+<li>
+<p><strong>Cứ</strong> implies disregard for surrounding conditions.</p>
+</li>
+<li>
+<p><strong>Vẫn</strong> implies continuation despite expected change.</p>
+</li>
+<li>
+<p><strong>vẫn</strong> and <strong>đã từng</strong>:
+<strong>Vẫn</strong> can express repetitive actions in the past.</p>
+</li>
+</ul>
+<pre>
+[1] Khi chưa có vợ, tôi vẫn nấu cơm cho mẹ tôi!
+    (When I was single, I often cooked for my mom!) (Repeated action in the past.)
+[2] Khi chưa có vợ, tôi đã từng nấu cơm cho mẹ tôi.
+    (When I was single, I used to cook for my mom.) (Fact of past experience.)
+</pre>
+<p>Cf. <strong>từng2</strong> (p. 391).</p>
+<h3 id="combinations"><a class="header" href="#combinations">Combinations</a></h3>
+<ul>
+<li><strong>vẫn sẽ</strong> / <strong>vẫn đang</strong>:
+<em>(Note: <strong>vẫn đã</strong> is incorrect.)</em></li>
+</ul>
+<pre>
+[1] Trước đây tôi đã từ chối. Bây giờ anh hỏi lại, tôi vẫn sẽ từ chối.
+[2] Công việc vẫn đang được tiến hành. (The work is still being carried out.)
+</pre>
+<ul>
+<li><strong>cũng vẫn</strong>:</li>
+</ul>
+<pre>
+[3] Tôi đã đọc tài liệu đó nhưng cũng vẫn không hiểu.
+    (I read it again but still don't understand it.)
+</pre>
+<ul>
+<li><strong>vẫn phải</strong>:</li>
+</ul>
+<pre>
+[4] Ông cụ đã 70 tuổi rồi mà vẫn phải làm việc.
+    (He's 70 but still has to work.)
+</pre>
+<ul>
+<li><strong>vẫn còn</strong>:</li>
+</ul>
+<pre>
+[5] Anh ấy vẫn còn làm việc cho bưu điện phải không?
+</pre>
+<ul>
+<li><strong>vẫn cứ</strong> / <strong>vẫn còn cứ</strong>:</li>
+</ul>
+<pre>
+[6] Bố mẹ nó đã khuyên nhiều nhưng nó vẫn cứ lười biếng.
+</pre>
+<ul>
+<li><strong>tuy... vẫn...</strong>:</li>
+</ul>
+<pre>
+[8] Tuy trời mưa tôi vẫn đi học. (Even though it's raining, I'm still going to school.)
+</pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="96-tung-quan.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="98-vay-pro.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="96-tung-quan.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="98-vay-pro.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>
