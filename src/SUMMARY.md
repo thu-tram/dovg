@@ -1,6 +1,7 @@
 # Summary
 
 - [Homepage](index.md)
+- [Guide to the dictionary](guide.md)
 - [A (Exclam.)](1-a.md)
 - [À (Par.)](2-a.md)
 - [Ấy (De. Pro.)](3-ay1.md)
