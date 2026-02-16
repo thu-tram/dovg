@@ -1,6 +1,16 @@
 [book]
-authors = ["Khanh Duy"]
-language = "en"
-multilingual = false
+authors = ["Nguyễn Văn Huệ"]
+language = "vi"
 src = "src"
-title = "dovg"
+title = "Dictionary of Basic Vietnamese Grammar"
+
+[output.html]
+default-theme = "Navy"
+additional-css = ["style/custom.css"]
+no-section-label = true
+
+[output.html.fold]
+enable = true
+
+[output.html.search]
+use-boolean-and = true
